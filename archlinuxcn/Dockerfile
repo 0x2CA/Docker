@@ -9,7 +9,8 @@ MAINTAINER servicesdocker "2478557459@qq.com"
 
 # 拷贝
 COPY . /
-# 跟新系统
+
+# 更新系统
 RUN   pacman -Syu 
 
 # key更新
