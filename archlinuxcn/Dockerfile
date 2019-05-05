@@ -1,7 +1,3 @@
-#
-# Mr.z
-#
-
 FROM archlinux/base:latest
 
 # 作者信息

@@ -1,11 +1,11 @@
-#
-# Mr.z
-#
-
 FROM servicesdocker/archlinuxcn:latest
 
 # 作者信息
 MAINTAINER servicesdocker "2478557459@qq.com"
+
+
+# 更新系统
+RUN   yaourt -Syu 
 
 # 安装nvm
 RUN  yaourt -Sy --noconfirm  nvm &&  \
@@ -20,8 +20,8 @@ RUN  [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"  &&\
     source /usr/share/nvm/bash_completion &&\
     source /usr/share/nvm/install-nvm-exec &&\
     yaourt -Sy --noconfirm tar &&\
-    nvm install 10.15.3 &&\
-    nvm use 10.15.3 
+    nvm install `nvm  ls-remote --lts |grep -P -o  v[0-9]+.[0-9]+.[0-9]+ | tail -1 ` &&\
+    nvm use `nvm  ls-remote --lts |grep -P -o  v[0-9]+.[0-9]+.[0-9]+ | tail -1 `
 
 CMD [ "/bin/bash" ]
 
