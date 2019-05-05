@@ -10,7 +10,7 @@ RUN  curl -o /etc/pacman.d/mirrorlist https://www.archlinux.org/mirrorlist/?coun
     echo "## 网易 (ipv4, http, https)" >> /etc/pacman.conf &&\
     echo "[archlinuxcn]" >> /etc/pacman.conf &&\
     echo "SigLevel = Optional TrustedOnly" >> /etc/pacman.conf &&\
-    echo "Server = https://mirrors.163.com/archlinux-cn/$arch" >> /etc/pacman.conf
+    echo "Server = https://mirrors.163.com/archlinux-cn/\$arch" >> /etc/pacman.conf
 
 # 更新系统
 RUN   pacman -Syu --noconfirm
