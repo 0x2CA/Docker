@@ -1,4 +1,4 @@
-FROM servicesdocker/archlinux-base:latest
+FROM servicesdocker/archlinuxcn-base:latest
 
 # 作者信息
 MAINTAINER servicesdocker "2478557459@qq.com"
