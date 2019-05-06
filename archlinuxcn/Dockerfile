@@ -21,6 +21,6 @@ RUN pacman-key --init && \
     pacman  -Sy  --noconfirm archlinuxcn-keyring 
 
 # 安装yaourt
-RUN  pacman -Sy --noconfirm  yaourt 
+RUN  pacman -Sy --noconfirm  yaourt
 
 CMD [ "/bin/bash" ]
