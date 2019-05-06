@@ -11,7 +11,9 @@ RUN apk  update &&\
     export NVM_DIR="$HOME/.nvm" &&\
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  &&\
     nvm  install  -s `nvm  ls-remote --lts |grep -P -o  v[0-9]+.[0-9]+.[0-9]+ | tail -1 ` &&\
-    nvm use `nvm  ls-remote --lts |grep -P -o  v[0-9]+.[0-9]+.[0-9]+ | tail -1 `
+    rm -R ~/.nvm/.cache &&\
+    nvm use `nvm  ls-remote --lts |grep -P -o  v[0-9]+.[0-9]+.[0-9]+ | tail -1 ` 
+
 
 
 
