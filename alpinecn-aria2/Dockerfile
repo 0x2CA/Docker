@@ -18,7 +18,9 @@ ADD . /
 
 RUN mkdir -p /data &&\
     chmod +x /usr/bin/aria2d &&\
-    dos2unix /usr/bin/aria2d
+    chmod +x /usr/bin/trackers-list-aria2 &&\
+    dos2unix /usr/bin/aria2d &&\
+    dos2unix /usr/bin/trackers-list-aria2
 
 WORKDIR /conf
 
