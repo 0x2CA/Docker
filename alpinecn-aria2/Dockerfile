@@ -6,22 +6,31 @@ MAINTAINER servicesdocker "2478557459@qq.com"
 # 安装aria2
 RUN   apk  update &&\
     apk  upgrade &&\
-    apk add aria2
-
-RUN mkdir -p ~/aria2 && mkdir -p ~/Downloads
-
-WORKDIR /root/aria2
+    apk add --no-cache aria2 git darkhttpd &&\
+    git clone --depth=1 https://github.com/ziahamza/webui-aria2 /tmp/webui-aria2 && \
+    mkdir /aria2-webui &&\
+    cp -r /tmp/webui-aria2/docs/* /aria2-webui/ &&\
+    rm -rf /tmp/* &&\
+    apk del git 
 
 # 默认设置
-add . /root/aria2
+ADD . /
 
-VOLUME [ "/root/aria2" ]
+RUN mkdir -p /data &&\
+    chmod +x /usr/bin/aria2d &&\
+    dos2unix /usr/bin/aria2d
 
-VOLUME [ "/root/Downloads" ]
+WORKDIR /conf
+
+VOLUME [ "/conf"]
+
+VOLUME [ "/data" ]
 
 EXPOSE 6800
 
-CMD [ "/usr/bin/aria2c","--conf=aria2.conf"]
+EXPOSE 80
+
+CMD [ "/usr/bin/aria2d"]
 
 
 
