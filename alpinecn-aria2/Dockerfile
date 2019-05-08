@@ -6,12 +6,13 @@ MAINTAINER servicesdocker "2478557459@qq.com"
 # 安装aria2
 RUN   apk  update &&\
     apk  upgrade &&\
-    apk add --no-cache aria2 git darkhttpd &&\
-    git clone --depth=1 https://github.com/ziahamza/webui-aria2 /tmp/webui-aria2 && \
+    apk add --no-cache aria2 darkhttpd &&\
+    wget https://github.com/mayswind/AriaNg-DailyBuild/archive/master.zip -O /tmp/ariang.zip &&\
     mkdir /aria2-webui &&\
-    cp -r /tmp/webui-aria2/docs/* /aria2-webui/ &&\
+    unzip /tmp/ariang.zip &&\
+    cp -r /AriaNg-DailyBuild-master/* /aria2-webui/ &&\
     rm -rf /tmp/* &&\
-    apk del git 
+    rm -rf /AriaNg-DailyBuild-master
 
 # 默认设置
 ADD . /
